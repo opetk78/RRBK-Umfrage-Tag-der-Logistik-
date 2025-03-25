@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Umfrage</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Logo der Schule -->
+    <img src="c:/Users/petkau/Pictures/RRBK.png" alt="Rudolf-Rempel-Berufsschule Logo" class="logo">
+
+    <!-- Code-Eingabe -->
+    <div id="code-section">
+        <h1>Umfrage Zugang</h1>
+        <p>Bitte geben Sie den Zugangscode ein, um die Umfrage zu starten:</p>
+        <input type="password" id="access-code" placeholder="4-stelliger Code" maxlength="4">
+        <button onclick="checkAccessCode()">Zugang bestätigen</button>
+        <p id="error-message" style="color: red; display: none;">Falscher Code. Bitte versuchen Sie es erneut.</p>
+    </div>
+
+    <!-- Umfrage -->
+    <div id="survey-section" style="display: none;">
+        <h1>Umfrage</h1>
+        <form id="survey-form">
+            <!-- Frage 1 -->
+            <div class="question" id="question1-section">
+                <label for="question1">1. Wie alt bist du?</label>
+                <select id="question1" name="question1">
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="jünger">jünger</option>
+                    <option value="älter">älter</option>
+                </select>
+            </div>
+
+            <!-- Frage 2 -->
+            <div class="question" id="question2-section" style="display:none;">
+                <label for="question2">2. Geschlecht?</label>
+                <select id="question2" name="question2">
+                    <option value="m">M</option>
+                    <option value="w">W</option>
+                    <option value="d">D</option>
+                </select>
+            </div>
+
+            <!-- Frage 3 -->
+            <div class="question" id="question3-section" style="display:none;">
+                <label for="question3">3. Bereits eine berufliche Orientierung?</label>
+                <select id="question3" name="question3">
+                    <option value="ja">Ja</option>
+                    <option value="nein">Nein</option>
+                </select>
+                <label for="question3-text">Wenn ja, bitte Textfeld ausfüllen:</label>
+                <textarea id="question3-text" name="question3-text"></textarea>
+            </div>
+
+            <!-- Frage 4 -->
+            <div class="question" id="question4-section" style="display:none;">
+                <label for="question4">4. Hattest du bereits einen Berufswunsch in der Logistik?</label>
+                <select id="question4" name="question4">
+                    <option value="ja">Ja</option>
+                    <option value="nein">Nein</option>
+                </select>
+            </div>
+
+            <!-- Frage 5 -->
+            <div class="question" id="question5-section" style="display:none;">
+                <label for="question5">5. Welchem Bildungsgang gehörst du an?</label>
+                <select id="question5" name="question5">
+                    <option value="HE23a-1">HE23a-1</option>
+                    <option value="HE23a-2">HE23a-2</option>
+                    <option value="HE23b-1">HE23b-1</option>
+                    <option value="HE23b-2">HE23b-2</option>
+                    <option value="HE23c-1">HE23c-1</option>
+                    <option value="HE23c-2">HE23c-2</option>
+                    <option value="HH23a-1">HH23a-1</option>
+                    <option value="HH23a-2">HH23a-2</option>
+                    <option value="HH23b-1">HH23b-1</option>
+                    <option value="HH23b-2">HH23b-2</option>
+                    <option value="BFS1">BFS1</option>
+                    <option value="andere">andere Schulform</option>
+                </select>
+            </div>
+
+            <!-- Frage 6 -->
+            <div class="question" id="question6-section" style="display:none;">
+                <label for="question6">6. Wie war im Vorfeld die Vorbereitung der Schule auf den Tag der Logistik?</label>
+                <input type="range" id="question6" name="question6" min="1" max="10">
+            </div>
+
+            <!-- Frage 7 -->
+            <div class="question" id="question7-section" style="display:none;">
+                <label for="question7">7. Wie war die Interesse im Vorfeld auf den Tag der Logistik?</label>
+                <input type="range" id="question7" name="question7" min="1" max="10">
+            </div>
+
+            <!-- Frage 8 -->
+            <div class="question" id="question8-section" style="display:none;">
+                <label for="question8">8. Wie fandest du die Vorstellung der Unternehmen bezogen auf den Tag der Logistik?</label>
+                <input type="range" id="question8" name="question8" min="1" max="10">
+            </div>
+
+            <!-- Frage 9 -->
+            <div class="question" id="question9-section" style="display:none;">
+                <label for="question9">9. Wie fandest du die zeitliche Strukturierung der Vorstellung der einzelnen Unternehmen?</label>
+                <input type="range" id="question9" name="question9" min="1" max="10">
+            </div>
+
+            <!-- Frage 10 -->
+            <div class="question" id="question10-section" style="display:none;">
+                <label for="question10">10. Hat dich der Tag der Logistik in deiner beruflichen Orientierung vorwärts gebracht?</label>
+                <input type="range" id="question10" name="question10" min="1" max="10">
+            </div>
+
+            <!-- Frage 11 -->
+            <div class="question" id="question11-section" style="display:none;">
+                <label for="question11">11. Wie fandest du die räumliche Aufteilung der Unternehmen?</label>
+                <input type="range" id="question11" name="question11" min="1" max="10">
+            </div>
+
+            <!-- Frage 12 -->
+            <div class="question" id="question12-section" style="display:none;">
+                <label for="question12">12. Würdest du zukünftig erneut an einem Tag der Logistik teilnehmen?</label>
+                <select id="question12" name="question12">
+                    <option value="ja">Ja</option>
+                    <option value="nein">Nein</option>
+                </select>
+            </div>
+
+            <!-- Frage 13 -->
+            <div class="question" id="question13-section" style="display:none;">
+                <label for="question13">13. Verbesserungsvorschläge:</label>
+                <textarea id="question13" name="question13"></textarea>
+            </div>
+
+            <div class="navigation">
+                <button type="button" id="prev-btn" onclick="prevQuestion()" style="display:none;">Zurück</button>
+                <button type="button" id="next-btn" onclick="nextQuestion()">Weiter</button>
+                <button type="submit" id="submit-btn" style="display:none;">Absenden</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
