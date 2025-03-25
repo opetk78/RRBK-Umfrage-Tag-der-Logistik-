@@ -1,21 +1,16 @@
 let currentQuestion = 1; // Start mit der ersten Frage
-const totalQuestions = 13; // Gesamtanzahl der regulären Fragen
-
-// Zugangscode festlegen
-const ACCESS_CODE = "1234"; // Ersetze "1234" durch deinen gewünschten 4-stelligen Code
+const totalQuestions = 10; // Gesamtanzahl der regulären Fragen
 
 // Funktion zur Überprüfung des Zugangscodes
 function checkAccessCode() {
-    const enteredCode = document.getElementById("access-code").value; // Eingegebener Code
-    const errorMessage = document.getElementById("error-message"); // Fehlermeldung
+    const enteredCode = document.getElementById("access-code").value;
+    const errorMessage = document.getElementById("error-message");
 
-    if (enteredCode === ACCESS_CODE) {
-        // Wenn der Code korrekt ist, zeige die Umfrage und verstecke den Code-Bereich
+    if (enteredCode === "1234") {
         document.getElementById("code-section").style.display = "none";
         document.getElementById("survey-section").style.display = "block";
-        showQuestion(currentQuestion); // Zeige die erste Frage
+        showQuestion(currentQuestion);
     } else {
-        // Wenn der Code falsch ist, zeige eine Fehlermeldung
         errorMessage.style.display = "block";
         errorMessage.textContent = "Falscher Code. Bitte versuchen Sie es erneut.";
     }
@@ -23,7 +18,6 @@ function checkAccessCode() {
 
 // Funktion, um die aktuelle Frage anzuzeigen
 function showQuestion(questionNumber) {
-    // Verstecke alle regulären Fragen
     for (let i = 1; i <= totalQuestions; i++) {
         const questionSection = document.getElementById(`question${i}-section`);
         if (questionSection) {
@@ -31,7 +25,6 @@ function showQuestion(questionNumber) {
         }
     }
 
-    // Steuerung der Navigationstasten
     document.getElementById("prev-btn").style.display = (questionNumber > 1) ? "inline" : "none";
     document.getElementById("next-btn").style.display = (questionNumber < totalQuestions) ? "inline" : "none";
     document.getElementById("submit-btn").style.display = (questionNumber === totalQuestions) ? "inline" : "none";
@@ -53,16 +46,15 @@ function prevQuestion() {
     }
 }
 
-// Event-Listener, um die erste Frage beim Laden der Seite anzuzeigen
-document.addEventListener("DOMContentLoaded", function () {
-    showQuestion(currentQuestion);
-});
+// Funktion, um die aktuelle Zahl der Skala anzuzeigen
+function updateRangeValue(id, value) {
+    document.getElementById(`${id}-value`).textContent = value;
+}
 
 // Event-Listener für das Absenden des Formulars
 document.getElementById("survey-form").addEventListener("submit", function (event) {
     event.preventDefault();
 
-    // Sammle die regulären Antworten
     const surveyData = {};
     for (let i = 1; i <= totalQuestions; i++) {
         const questionElement = document.getElementById(`question${i}`);
@@ -72,6 +64,4 @@ document.getElementById("survey-form").addEventListener("submit", function (even
     }
 
     console.log("Sende Umfrageergebnisse:", surveyData);
-
-    // Hier kannst du die Daten an deinen Server oder JSONBin senden
 });
