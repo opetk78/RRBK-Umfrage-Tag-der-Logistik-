@@ -105,7 +105,7 @@ document.getElementById("survey-form").addEventListener("submit", function (even
     }
 
     // Daten an die Google Apps Script Web-App senden
-    fetch("https://script.google.com/macros/s/AKfycbwsRkc8RM6KD_MYQbNjPtELFFhKeJ3ghSdh088TGgph9wDBFCUTT41x-81fTI8RTQSE/exec", { // Ersetze DEINE_WEB_APP_URL durch die Web-App-URL
+    fetch("https://script.google.com/macros/s/AKfycbxQot2UHk0BHomQVkKIzSpOspWgZtxQf8a1OFN35IGJchU9dwxOj3EVhgiGoGpeJSSo/exec", { // Ersetze DEINE_WEB_APP_URL durch die Web-App-URL
         method: "POST",
         headers: {
             "Content-Type": "application/json",
