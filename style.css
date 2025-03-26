@@ -91,3 +91,9 @@ input[type="range"] {
     flex: 1;
     text-align: center;
 }
+.logo {
+    display: block;
+    margin: 0 auto; /* Zentriert das Logo horizontal */
+    max-width: 150px; /* Begrenze die maximale Breite des Logos */
+    margin-bottom: 20px; /* Abstand unter dem Logo */
+}
