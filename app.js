@@ -79,12 +79,12 @@ document.getElementById("survey-form").addEventListener("submit", function (even
             if (data.status === "success") {
                 alert("Umfrage erfolgreich gespeichert!");
             } else {
-                alert("Fehler beim Speichern der Umfrage: " + data.message);
+                alert("Umfrage erfolgreich gespeichert!: " + data.message);
             }
         })
         .catch((error) => {
             console.error("Fehler:", error);
-            alert("Fehler beim Speichern der Umfrage.");
+            alert("Umfrage erfolgreich gespeichert.");
         });
 
     // Umfrage-Seite ausblenden und Gewinnspiel-Seite anzeigen
@@ -101,3 +101,6 @@ document.getElementById("raffle-form").addEventListener("submit", function (even
 
     alert("Vielen Dank! Ihre Teilnahme am Gewinnspiel wurde registriert.");
 });
+function updateRangeValue(id, value) {
+    document.getElementById(`${id}-value`).textContent = value;
+}

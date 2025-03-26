@@ -33,8 +33,7 @@
                     <option value="15">15</option>
                     <option value="16">16</option>
                     <option value="17">17</option>
-                    <option value="jünger">jünger</option>
-                    <option value="älter">älter</option>
+                
                 </select>
             </div>
 
@@ -50,7 +49,7 @@
 
             <!-- Frage 3 -->
             <div class="question" id="question3-section" style="display:none;">
-                <label for="question3">3. Bereits eine berufliche Orientierung?</label>
+                <label for="question3">3. WEißt du schon was du nach der Schule beruflich machen möchtest?</label>
                 <select id="question3" name="question3">
                     <option value="ja">Ja</option>
                     <option value="nein">Nein</option>
@@ -70,7 +69,7 @@
 
             <!-- Frage 5 -->
             <div class="question" id="question5-section" style="display:none;">
-                <label for="question5">5. Welchem Bildungsgang gehörst du an?</label>
+                <label for="question5">5. In welche Klasse gehst du?</label>
                 <select id="question5" name="question5">
                     <option value="HE23a-1">HE23a-1</option>
                     <option value="HE23a-2">HE23a-2</option>
@@ -83,45 +82,130 @@
                     <option value="HH23b-1">HH23b-1</option>
                     <option value="HH23b-2">HH23b-2</option>
                     <option value="BFS1">BFS1</option>
-                    <option value="andere">andere Schulform</option>
+                    <option value="andere">andere </option>
                 </select>
             </div>
 
             <!-- Frage 6 -->
             <div class="question" id="question6-section" style="display:none;">
-                <label for="question6">6. Wie war im Vorfeld die Vorbereitung der Schule auf den Tag der Logistik?</label>
-                <input type="range" id="question6" name="question6" min="1" max="10">
+                <label for="question6">6. Haben dich deine Lehrer*Innen auf den Tag der Logistik vorbereitet?</label>
+                <p>Bitte bewerten: <strong>1 = gar nicht vorbereitet</strong>, <strong>10 = sehr gut vorbereitet</strong></p>
+                <input type="range" id="question6" name="question6" min="1" max="10" step="1" oninput="updateRangeValue('question6', this.value)">
+                <div class="range-labels">
+                    <span>1</span>
+                    <span>2</span>
+                    <span>3</span>
+                    <span>4</span>
+                    <span>5</span>
+                    <span>6</span>
+                    <span>7</span>
+                    <span>8</span>
+                    <span>9</span>
+                    <span>10</span>
+                </div>
+                <p>Aktueller Wert: <span id="question6-value">5</span></p>
             </div>
 
             <!-- Frage 7 -->
             <div class="question" id="question7-section" style="display:none;">
-                <label for="question7">7. Wie war die Interesse im Vorfeld auf den Tag der Logistik?</label>
-                <input type="range" id="question7" name="question7" min="1" max="10">
+                <label for="question7">7. Hast du dich im Vorfeld auf den Tag der Logistik vorbereitet/informiert ?</label>
+                <p>Bitte bewerten: <strong>1 = gar nicht vorbereitet</strong>, <strong>10 = sehr gut vorbereitet</strong></p>
+                <input type="range" id="question7" name="question7" min="1" max="10" step="1" oninput="updateRangeValue('question7', this.value)">
+                <div class="range-labels">
+                    <span>1</span>
+                    <span>2</span>
+                    <span>3</span>
+                    <span>4</span>
+                    <span>5</span>
+                    <span>6</span>
+                    <span>7</span>
+                    <span>8</span>
+                    <span>9</span>
+                    <span>10</span>
+                </div>
+                <p>Aktueller Wert: <span id="question7-value">5</span></p>
             </div>
 
             <!-- Frage 8 -->
             <div class="question" id="question8-section" style="display:none;">
-                <label for="question8">8. Wie fandest du die Vorstellung der Unternehmen bezogen auf den Tag der Logistik?</label>
-                <input type="range" id="question8" name="question8" min="1" max="10">
+                <label for="question8">8. Wie fandest du die Vorstellung der Unternehmen am Tag der Logistik?</label>
+                <p>Bitte bewerten: <strong>1 = sehr schlechte Vorstellung</strong>, <strong>10 = sehr gute Vorstellung</strong></p>
+                <input type="range" id="question8" name="question8" min="1" max="10" step="1" oninput="updateRangeValue('question8', this.value)">
+                <div class="range-labels">
+                    <span>1</span>
+                    <span>2</span>
+                    <span>3</span>
+                    <span>4</span>
+                    <span>5</span>
+                    <span>6</span>
+                    <span>7</span>
+                    <span>8</span>
+                    <span>9</span>
+                    <span>10</span>
+                </div>
+                <p>Aktueller Wert: <span id="question8-value">5</span></p>
             </div>
 
             <!-- Frage 9 -->
             <div class="question" id="question9-section" style="display:none;">
                 <label for="question9">9. Wie fandest du die zeitliche Strukturierung der Vorstellung der einzelnen Unternehmen?</label>
-                <input type="range" id="question9" name="question9" min="1" max="10">
+                <p>Bitte bewerten: <strong>1 = sehr schlecht</strong>, <strong>10 = sehr gut</strong></p>
+                <input type="range" id="question9" name="question9" min="1" max="10" step="1" oninput="updateRangeValue('question9', this.value)">
+                <div class="range-labels">
+                    <span>1</span>
+                    <span>2</span>
+                    <span>3</span>
+                    <span>4</span>
+                    <span>5</span>
+                    <span>6</span>
+                    <span>7</span>
+                    <span>8</span>
+                    <span>9</span>
+                    <span>10</span>
+                </div>
+                <p>Aktueller Wert: <span id="question9-value">5</span></p>
             </div>
 
             <!-- Frage 10 -->
             <div class="question" id="question10-section" style="display:none;">
-                <label for="question10">10. Hat dich der Tag der Logistik in deiner beruflichen Orientierung vorwärts gebracht? 1= gar nicht geholfen 10= sehr weiter geholfen</label>
-                <input type="range" id="question10" name="question10" min="1" max="10">
+                <label for="question10">10. Hat dich der Tag der Logistik in deiner beruflichen Orientierung vorwärts gebracht?</label>
+                <p>Bitte bewerten: <strong>1 = gar nicht geholfen</strong>, <strong>10 = sehr weiter geholfen</strong></p>
+                <input type="range" id="question10" name="question10" min="1" max="10" step="1" oninput="updateRangeValue('question10', this.value)">
+                <div class="range-labels">
+                    <span>1</span>
+                    <span>2</span>
+                    <span>3</span>
+                    <span>4</span>
+                    <span>5</span>
+                    <span>6</span>
+                    <span>7</span>
+                    <span>8</span>
+                    <span>9</span>
+                    <span>10</span>
+                </div>
+                <p>Aktueller Wert: <span id="question10-value">5</span></p>
             </div>
 
             <!-- Frage 11 -->
             <div class="question" id="question11-section" style="display:none;">
                 <label for="question11">11. Wie fandest du die räumliche Aufteilung der Unternehmen?</label>
-                <input type="range" id="question11" name="question11" min="1" max="10">
+                <p>Bitte bewerten: <strong>1 = sehr gut und Übersichtlich</strong>, <strong>10 = sehr schlecht und ich hab mich nicht zurechtgefunden</strong></p>
+                <input type="range" id="question11" name="question11" min="1" max="10" step="1" oninput="updateRangeValue('question11', this.value)">
+                <div class="range-labels">
+                    <span>1</span>
+                    <span>2</span>
+                    <span>3</span>
+                    <span>4</span>
+                    <span>5</span>
+                    <span>6</span>
+                    <span>7</span>
+                    <span>8</span>
+                    <span>9</span>
+                    <span>10</span>
+                </div>
+                <p>Aktueller Wert: <span id="question11-value">5</span></p>
             </div>
+
 
             <!-- Frage 12 -->
             <div class="question" id="question12-section" style="display:none;">
