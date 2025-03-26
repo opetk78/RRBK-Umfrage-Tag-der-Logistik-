@@ -46,10 +46,10 @@
                     <option value="d">D</option>
                 </select>
             </div>
-
+            
             <!-- Frage 3 -->
             <div class="question" id="question3-section" style="display:none;">
-                <label for="question3">3. WEißt du schon was du nach der Schule beruflich machen möchtest?</label>
+                <label for="question3">3. Weißt du schon was du nach der Schule beruflich machen möchtest?</label>
                 <select id="question3" name="question3">
                     <option value="ja">Ja</option>
                     <option value="nein">Nein</option>
@@ -60,7 +60,7 @@
 
             <!-- Frage 4 -->
             <div class="question" id="question4-section" style="display:none;">
-                <label for="question4">4. Hattest du bereits einen Berufswunsch in der Logistik?</label>
+                <label for="question4">4. Hast du bereits einen Berufswunsch in der Logistik?</label>
                 <select id="question4" name="question4">
                     <option value="ja">Ja</option>
                     <option value="nein">Nein</option>
@@ -218,10 +218,52 @@
 
             <!-- Frage 13 -->
             <div class="question" id="question13-section" style="display:none;">
-                <label for="question13">13. Verbesserungsvorschläge:</label>
+                <label for="question13">13. AllgemeineVerbesserungsvorschläge:</label>
                 <textarea id="question13" name="question13"></textarea>
             </div>
+            <!-- Frage 14 -->
+            <div class="question" id="question14-section" style="display:none;">
+                <label for="question14">14. Hat die Veranstaltung dafür gesorgt das du Berufe in der Logistik besser verstehst?</label>
+                <select id="question14" name="question14">
+                    <option value="ja">Ja</option>
+                    <option value="nein">Nein</option>
+                </select>
+            </div>
+            <!-- Frage 15: Welchen Betrieb hast du besucht? -->
+<div class="question" id="question15-section" style="display:none;">
+    <label for="question15">15. Welchen Betrieb hast du besucht?</label>
+    <p>Wähle einen oder mehrere Betriebe aus:</p>
+    <div>
+        <input type="checkbox" id="betrieb1" name="betrieb" value="Dachser">
+        <label for="betrieb1">Dachser</label>
+    </div>
+    <div>
+        <input type="checkbox" id="betrieb2" name="betrieb" value="Kühne+Nagel">
+        <label for="betrieb2">Kühne+Nagel</label>
+    </div>
+    <div>
+        <input type="checkbox" id="betrieb3" name="betrieb" value="Schenker">
+        <label for="betrieb3">Schenker</label>
+    </div>
+    <div>
+        <input type="checkbox" id="betrieb4" name="betrieb" value="Nagel Group">
+        <label for="betrieb4">Nagel Group</label>
+    </div>
+    <div>
+        <input type="checkbox" id="betrieb5" name="betrieb" value="Wahl & Co.">
+        <label for="betrieb5">Wahl & Co.</label>
+    </div>
+    <button type="button" onclick="handleBetriebSelection()">Weiter</button>
+</div>
 
+<!-- Dynamische Fragen: Was hat dir gefallen? -->
+<div class="question" id="dynamic-question-section" style="display:none;">
+    <h3>Was hat dir besonders gefallen/nicht gefallen?</h3>
+    <div id="dynamic-questions-container">
+        <!-- Dynamische Fragen werden hier eingefügt -->
+    </div>
+    <button type="button" onclick="nextQuestion()">Weiter</button>
+</div>
             <div class="navigation">
                 <button type="button" id="prev-btn" onclick="prevQuestion()" style="display:none;">Zurück</button>
                 <button type="button" id="next-btn" onclick="nextQuestion()">Weiter</button>
