@@ -92,3 +92,36 @@ document.getElementById("raffle-form").addEventListener("submit", function (even
 
     alert("Vielen Dank! Ihre Teilnahme am Gewinnspiel wurde registriert.");
 });
+document.getElementById("survey-form").addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    // Sammle die regulären Antworten
+    const surveyData = {};
+    for (let i = 1; i <= 13; i++) {
+        const questionElement = document.getElementById(`question${i}`);
+        if (questionElement) {
+            surveyData[`question${i}`] = questionElement.value || "";
+        }
+    }
+
+    // Daten an die Google Apps Script Web-App senden
+    fetch("https://script.google.com/macros/s/AKfycbwsRkc8RM6KD_MYQbNjPtELFFhKeJ3ghSdh088TGgph9wDBFCUTT41x-81fTI8RTQSE/exec", { // Ersetze DEINE_WEB_APP_URL durch die Web-App-URL
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(surveyData),
+    })
+        .then((response) => response.json())
+        .then((data) => {
+            if (data.status === "success") {
+                alert("Umfrage erfolgreich gespeichert!");
+            } else {
+                alert("Fehler beim Speichern der Umfrage: " + data.message);
+            }
+        })
+        .catch((error) => {
+            console.error("Fehler:", error);
+            alert("Fehler beim Speichern der Umfrage.");
+        });
+});
