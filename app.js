@@ -1,5 +1,5 @@
 let currentQuestion = 1; // Start mit der ersten Frage
-const totalQuestions = 10; // Gesamtanzahl der regulären Fragen
+const totalQuestions = 13; // Gesamtanzahl der regulären Fragen
 
 // Funktion zur Überprüfung des Zugangscodes
 function checkAccessCode() {
@@ -55,6 +55,7 @@ function updateRangeValue(id, value) {
 document.getElementById("survey-form").addEventListener("submit", function (event) {
     event.preventDefault();
 
+    // Sammle die regulären Antworten
     const surveyData = {};
     for (let i = 1; i <= totalQuestions; i++) {
         const questionElement = document.getElementById(`question${i}`);
@@ -64,48 +65,9 @@ document.getElementById("survey-form").addEventListener("submit", function (even
     }
 
     console.log("Sende Umfrageergebnisse:", surveyData);
-});
-document.getElementById("survey-form").addEventListener("submit", function (event) {
-    event.preventDefault();
-
-    // Umfrageergebnisse sammeln
-    const surveyData = {};
-    for (let i = 1; i <= 13; i++) {
-        const questionElement = document.getElementById(`question${i}`);
-        if (questionElement) {
-            surveyData[`question${i}`] = questionElement.value || "";
-        }
-    }
-
-    console.log("Umfrageergebnisse:", surveyData);
-
-    // Umfrage-Seite ausblenden und Gewinnspiel-Seite anzeigen
-    document.getElementById("survey-section").style.display = "none";
-    document.getElementById("raffle-section").style.display = "block";
-});
-
-document.getElementById("raffle-form").addEventListener("submit", function (event) {
-    event.preventDefault();
-
-    const email = document.getElementById("email").value;
-    console.log("E-Mail für Gewinnspiel:", email);
-
-    alert("Vielen Dank! Ihre Teilnahme am Gewinnspiel wurde registriert.");
-});
-document.getElementById("survey-form").addEventListener("submit", function (event) {
-    event.preventDefault();
-
-    // Sammle die regulären Antworten
-    const surveyData = {};
-    for (let i = 1; i <= 13; i++) {
-        const questionElement = document.getElementById(`question${i}`);
-        if (questionElement) {
-            surveyData[`question${i}`] = questionElement.value || "";
-        }
-    }
 
     // Daten an die Google Apps Script Web-App senden
-    fetch("https://script.google.com/macros/s/AKfycbxQot2UHk0BHomQVkKIzSpOspWgZtxQf8a1OFN35IGJchU9dwxOj3EVhgiGoGpeJSSo/exec", { // Ersetze DEINE_WEB_APP_URL durch die Web-App-URL
+    fetch("https://script.google.com/macros/s/DEINE_WEB_APP_URL/exec", { // Ersetze DEINE_WEB_APP_URL durch die Web-App-URL
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -124,4 +86,58 @@ document.getElementById("survey-form").addEventListener("submit", function (even
             console.error("Fehler:", error);
             alert("Fehler beim Speichern der Umfrage.");
         });
+
+    // Umfrage-Seite ausblenden und Gewinnspiel-Seite anzeigen
+    document.getElementById("survey-section").style.display = "none";
+    document.getElementById("raffle-section").style.display = "block";
+});
+
+// Event-Listener für das Absenden des Gewinnspiel-Formulars
+document.getElementById("raffle-form").addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const email = document.getElementById("email").value;
+    console.log("E-Mail für Gewinnspiel:", email);
+
+    alert("Vielen Dank! Ihre Teilnahme am Gewinnspiel wurde registriert.");
+});
+document.getElementById("survey-form").addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    // Sammle die regulären Antworten
+    const surveyData = {};
+    for (let i = 1; i <= totalQuestions; i++) {
+        const questionElement = document.getElementById(`question${i}`);
+        if (questionElement) {
+            surveyData[`question${i}`] = questionElement.value || "";
+        }
+    }
+
+    console.log("Sende folgende Daten an die Web-App:", surveyData);
+
+    // Daten an die Google Apps Script Web-App senden
+    fetch("https://script.google.com/macros/s/AKfycbz9tsFweiyqMFuBTes8aUMHZ-dykdJwPSPu_FtDXN0cjkYJHuGh5BkelMpLqZKQPlTg/exec", { // Ersetze DEINE_WEB_APP_URL durch die Web-App-URL
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(surveyData),
+    })
+        .then((response) => response.json())
+        .then((data) => {
+            console.log("Antwort von der Web-App:", data);
+            if (data.status === "success") {
+                alert("Umfrage erfolgreich gespeichert!");
+            } else {
+                alert("Fehler beim Speichern der Umfrage: " + data.message);
+            }
+        })
+        .catch((error) => {
+            console.error("Fehler beim Senden der Daten:", error);
+            alert("Fehler beim Speichern der Umfrage.");
+        });
+
+    // Umfrage-Seite ausblenden und Gewinnspiel-Seite anzeigen
+    document.getElementById("survey-section").style.display = "none";
+    document.getElementById("raffle-section").style.display = "block";
 });
