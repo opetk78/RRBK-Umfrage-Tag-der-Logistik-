@@ -65,3 +65,30 @@ document.getElementById("survey-form").addEventListener("submit", function (even
 
     console.log("Sende Umfrageergebnisse:", surveyData);
 });
+document.getElementById("survey-form").addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    // Umfrageergebnisse sammeln
+    const surveyData = {};
+    for (let i = 1; i <= 13; i++) {
+        const questionElement = document.getElementById(`question${i}`);
+        if (questionElement) {
+            surveyData[`question${i}`] = questionElement.value || "";
+        }
+    }
+
+    console.log("Umfrageergebnisse:", surveyData);
+
+    // Umfrage-Seite ausblenden und Gewinnspiel-Seite anzeigen
+    document.getElementById("survey-section").style.display = "none";
+    document.getElementById("raffle-section").style.display = "block";
+});
+
+document.getElementById("raffle-form").addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const email = document.getElementById("email").value;
+    console.log("E-Mail für Gewinnspiel:", email);
+
+    alert("Vielen Dank! Ihre Teilnahme am Gewinnspiel wurde registriert.");
+});
