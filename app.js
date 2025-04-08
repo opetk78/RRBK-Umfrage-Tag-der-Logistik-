@@ -1,12 +1,12 @@
 let currentQuestion = 1; // Start mit der ersten Frage
-const totalQuestions = 15; // Gesamtanzahl der regulären Fragen
+const totalQuestions = 17; // Gesamtanzahl der regulären Fragen
 
 // Funktion zur Überprüfung des Zugangscodes
 function checkAccessCode() {
     const enteredCode = document.getElementById("access-code").value;
     const errorMessage = document.getElementById("error-message");
 
-    if (enteredCode === "1234") {
+    if (enteredCode === "1004") {
         document.getElementById("code-section").style.display = "none";
         document.getElementById("survey-section").style.display = "block";
         showQuestion(currentQuestion);
@@ -146,17 +146,6 @@ function handleBetriebSelection() {
     }
 }
 
-// Validierungsfunktion für dynamische Fragen
-function validateDynamicQuestions() {
-    const dynamicQuestions = document.querySelectorAll("#dynamic-questions-container textarea");
-    for (const question of dynamicQuestions) {
-        if (question.value.trim() === "") {
-            alert("Bitte beantworte alle dynamischen Fragen, bevor du fortfährst.");
-            return false;
-        }
-    }
-    return true;
-}
 
 // Aktualisiere die Funktion zum Sammeln der Antworten
 document.getElementById("survey-form").addEventListener("submit", function (event) {
