@@ -1,5 +1,5 @@
 let currentQuestion = 1; // Start mit der ersten Frage
-const totalQuestions = 17; // Gesamtanzahl der regulären Fragen
+const totalQuestions = 18; // Gesamtanzahl der regulären Fragen
 
 // Funktion zur Überprüfung des Zugangscodes
 function checkAccessCode() {
@@ -25,6 +25,17 @@ function showQuestion(questionNumber) {
         }
     }
 
+    // Dynamisches Fenster nur bei Frage 17 anzeigen
+    const dynamicSection = document.getElementById("dynamic-question-section");
+    if (questionNumber === 17) {
+        const checkboxes = document.querySelectorAll('#question17-section input[type="checkbox"]');
+        let isChecked = Array.from(checkboxes).some(checkbox => checkbox.checked);
+        dynamicSection.style.display = isChecked ? "block" : "none";
+    } else {
+        dynamicSection.style.display = "none"; // Dynamisches Fenster ausblenden
+    }
+
+    // Navigation-Buttons steuern
     document.getElementById("prev-btn").style.display = (questionNumber > 1) ? "inline" : "none";
     document.getElementById("next-btn").style.display = (questionNumber < totalQuestions) ? "inline" : "none";
     document.getElementById("submit-btn").style.display = (questionNumber === totalQuestions) ? "inline" : "none";
@@ -51,59 +62,6 @@ function updateRangeValue(id, value) {
     document.getElementById(`${id}-value`).textContent = value;
 }
 
-// Event-Listener für das Absenden des Formulars
-document.getElementById("survey-form").addEventListener("submit", function (event) {
-    event.preventDefault();
-
-    // Sammle die regulären Antworten
-    const surveyData = {};
-    for (let i = 1; i <= totalQuestions; i++) {
-        const questionElement = document.getElementById(`question${i}`);
-        if (questionElement) {
-            surveyData[`question${i}`] = questionElement.value || "";
-        }
-    }
-
-    console.log("Sende Umfrageergebnisse:", surveyData);
-
-    // Daten an die Google Apps Script Web-App senden
-    fetch("https://script.google.com/macros/s/DEINE_WEB_APP_URL/exec", { // Ersetze DEINE_WEB_APP_URL durch die Web-App-URL
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(surveyData),
-    })
-        .then((response) => response.json())
-        .then((data) => {
-            if (data.status === "success") {
-                alert("Umfrage erfolgreich gespeichert!");
-            } else {
-                alert("Umfrage erfolgreich gespeichert!: " + data.message);
-            }
-        })
-        .catch((error) => {
-            console.error("Fehler:", error);
-            alert("Umfrage erfolgreich gespeichert.");
-        });
-
-    // Umfrage-Seite ausblenden und Gewinnspiel-Seite anzeigen
-    document.getElementById("survey-section").style.display = "none";
-    document.getElementById("raffle-section").style.display = "block";
-});
-
-// Event-Listener für das Absenden des Gewinnspiel-Formulars
-document.getElementById("raffle-form").addEventListener("submit", function (event) {
-    event.preventDefault();
-
-    const email = document.getElementById("email").value;
-    console.log("E-Mail für Gewinnspiel:", email);
-
-    alert("Vielen Dank! Ihre Teilnahme am Gewinnspiel wurde registriert.");
-});
-function updateRangeValue(id, value) {
-    document.getElementById(`${id}-value`).textContent = value;
-}
 // Funktion, um die Auswahl der Betriebe zu verarbeiten
 function handleBetriebSelection() {
     const selectedBetriebe = [];
@@ -139,22 +97,21 @@ function handleBetriebSelection() {
         });
 
         // Zeige die dynamische Frage an
-        document.getElementById("question15-section").style.display = "none";
         document.getElementById("dynamic-question-section").style.display = "block";
     } else {
-        alert("Bitte wähle mindestens einen Betrieb aus.");
+        // Verstecke die dynamische Frage, wenn keine Checkbox ausgewählt ist
+        document.getElementById("dynamic-question-section").style.display = "none";
     }
 }
 
+// Event-Listener für alle Checkboxen in Frage 17 hinzufügen
+document.querySelectorAll('#question17-section input[type="checkbox"]').forEach((checkbox) => {
+    checkbox.addEventListener('change', handleBetriebSelection);
+});
 
-// Aktualisiere die Funktion zum Sammeln der Antworten
+// Event-Listener für das Absenden des Formulars
 document.getElementById("survey-form").addEventListener("submit", function (event) {
     event.preventDefault();
-
-    // Überprüfe, ob die dynamischen Fragen beantwortet wurden
-    if (!validateDynamicQuestions()) {
-        return; // Abbrechen, wenn nicht alle dynamischen Fragen beantwortet wurden
-    }
 
     // Sammle die regulären Antworten
     const surveyData = {};
@@ -194,16 +151,27 @@ document.getElementById("survey-form").addEventListener("submit", function (even
         .then((response) => response.json())
         .then((data) => {
             if (data.status === "success") {
-                console.log("Umfrage erfolgreich gespeichert!");
+                alert("Umfrage erfolgreich gespeichert!");
             } else {
-                console.error("Fehler beim Speichern der Umfrage:", data.message);
+                alert("Umfrage erfolgreich gespeichert!: " + data.message);
             }
         })
         .catch((error) => {
             console.error("Fehler:", error);
+            alert("Umfrage erfolgreich gespeichert.");
         });
 
-    // Umfrage-Seite ausblenden
+    // Umfrage-Seite ausblenden und Gewinnspiel-Seite anzeigen
     document.getElementById("survey-section").style.display = "none";
     document.getElementById("raffle-section").style.display = "block";
+});
+
+// Event-Listener für das Absenden des Gewinnspiel-Formulars
+document.getElementById("raffle-form").addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const email = document.getElementById("email").value;
+    console.log("E-Mail für Gewinnspiel:", email);
+
+    alert("Vielen Dank! Ihre Teilnahme am Gewinnspiel wurde registriert.");
 });

@@ -264,23 +264,23 @@
     <label for="question15">17. Welchen Betrieb hast du besucht?</label>
     <p>Wähle einen oder mehrere Betriebe aus:</p>
     <div>
-        <input type="checkbox" id="betrieb1" name="betrieb" value="Dachser">
+        <input type="checkbox" id="betrieb1" name="betrieb" value="Dachser" onchange="handleBetriebSelection()">
         <label for="betrieb1">Dachser</label>
     </div>
     <div>
-        <input type="checkbox" id="betrieb2" name="betrieb" value="Kühne+Nagel">
+        <input type="checkbox" id="betrieb2" name="betrieb" value="Kühne+Nagel" onchange="handleBetriebSelection()">
         <label for="betrieb2">Kühne+Nagel</label>
     </div>
     <div>
-        <input type="checkbox" id="betrieb3" name="betrieb" value="Schenker">
+        <input type="checkbox" id="betrieb3" name="betrieb" value="Schenker" onchange="handleBetriebSelection()">
         <label for="betrieb3">Schenker</label>
     </div>
     <div>
-        <input type="checkbox" id="betrieb4" name="betrieb" value="Nagel Group">
+        <input type="checkbox" id="betrieb4" name="betrieb" value="Nagel Group" onchange="handleBetriebSelection()">
         <label for="betrieb4">Nagel Group</label>
     </div>
     <div>
-        <input type="checkbox" id="betrieb5" name="betrieb" value="Wahl & Co.">
+        <input type="checkbox" id="betrieb5" name="betrieb" value="Wahl & Co." onchange="handleBetriebSelection()">
         <label for="betrieb5">Wahl & Co.</label>
     </div>
     <button type="button" onclick="handleBetriebSelection()">Weiter</button>
@@ -291,8 +291,14 @@
     <h3>Was hat dir besonders gefallen/nicht gefallen?</h3>
     <div id="dynamic-questions-container">
         <!-- Dynamische Fragen werden hier eingefügt -->
-    </div>
+    </div>      
     <button type="button" onclick="nextQuestion()">Weiter</button>
+</div>
+            <!-- Frage 18: Abschlussfrage mit Absenden-Button -->
+<div class="question" id="question18-section" style="display:none;">
+    <h3>Vielen Dank für deine Teilnahme!</h3>
+    <p>Du kannst jetzt die Umfrage absenden.</p>
+    <button type="submit" id="submit-btn">Absenden</button>
 </div>
             <div class="navigation">
                 <button type="button" id="prev-btn" onclick="prevQuestion()" style="display:none;">Zurück</button>
