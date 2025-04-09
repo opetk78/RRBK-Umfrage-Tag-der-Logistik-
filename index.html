@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -57,17 +58,16 @@
             <div class="question" id="question3-section" style="display:none;">
                 <label for="question3">3. In welche Klasse gehst du?</label>
                 <select id="question3" name="question3">
-                    <option value="HE23a-1">HE23a-1</option>
-                    <option value="HE23a-2">HE23a-2</option>
-                    <option value="HE23b-1">HE23b-1</option>
-                    <option value="HE23b-2">HE23b-2</option>
-                    <option value="HE23c-1">HE23c-1</option>
-                    <option value="HE23c-2">HE23c-2</option>
-                    <option value="HH23a-1">HH23a-1</option>
-                    <option value="HH23a-2">HH23a-2</option>
-                    <option value="HH23b-1">HH23b-1</option>
-                    <option value="HH23b-2">HH23b-2</option>
-                    <option value="BFS1">BFS1</option>
+                    <option value="HE23a">HE23a</option>
+                    <option value="HE23b">HE23b</option>
+                    <option value="HE23c">HE23c</option>
+                    <option value="HH23a">HH23a</option>
+                    <option value="HH23b">HH23b</option>
+                    <option value="HH23c">HH23c</option>
+                    <option value="BF24a">Bf24a</option>
+                    <option value="BF24b">Bf24b</option>
+                    <option value="BF24c">Bf24c</option>
+                    <option value="Realschule">Realschule</option>
                     <option value="andere">andere </option>
                 </select>
             </div>
@@ -120,10 +120,9 @@
                     <option value="weiß ich noch nicht">weiß ich noch nicht </option>
                     <option value="etwas anderes">etwas anderes </option>
                 </select>
-                <label for="question6-text">Wenn etwas anderes, bitte Textfeld ausfüllen:</label>
+                <label for="question6-text">Wenn "etwas anderes"ausgewählt, bitte Textfeld ausfüllen:</label>
                 <textarea id="question6-text" name="question6-text"></textarea>
             </div>
-
              <!-- Frage 7 -->
              <div class="question" id="question7-section" style="display:none;">
                 <label for="question7">7. Könntest du dir eine berufliche Laufbahn in der Logistik vorstellen?</label>
@@ -132,8 +131,6 @@
                     <option value="nein">Nein</option>
                 </select>
             </div>
-
-            
             <!-- Frage 8 -->
             <div class="question" id="question8-section" style="display:none;">
                 <label for="question8-section">8. Könntest du dir vorstellen ein Praktikum in der Logistik zu machen?</label>
@@ -152,30 +149,21 @@
                 </select>
             </div>
             
-            <!-- Frage 10 -->
+            <!-- Frage 10-->
             <div class="question" id="question10-section" style="display:none;">
-                <label for="question10">10. Hat dir der Tag der Logistik in deiner beruflichen Orientierung weiter geholfen?</label>
-                <p>Bitte bewerten: <strong>1 = gar nicht geholfen</strong>, <strong>10 = sehr weiter geholfen</strong></p>
-                <input type="range" id="question10" name="question10" min="1" max="10" step="1" oninput="updateRangeValue('question10', this.value)">
-                <div class="range-labels">
-                    <span>1</span>
-                    <span>2</span>
-                    <span>3</span>
-                    <span>4</span>
-                    <span>5</span>
-                    <span>6</span>
-                    <span>7</span>
-                    <span>8</span>
-                    <span>9</span>
-                    <span>10</span>
-                </div>
-                <p>Aktueller Wert: <span id="question10-value">5</span></p>
+                <label for="question10">10.Welchen Bereich der Logistik fandest du besonders interessant?</label>
+                <select id="question10" name="question10">
+                    <option value="E-Commerce & Onlinehandel">E-Commerce & Onlinehandel</option>
+                    <option value="Lager & Warenwirtschaft">Lager & Warenwirtschaft</option>
+                    <option value="Transport & Spedition">Transport & Spedition</option>
+                    <option value="Umweltfreundliche Logistik & Nachhaltigkeit">Umweltfreundliche Logistik & Nachhaltigkeit</option>
+                    <option value="keine">keine</option>
+                </select>
             </div>
-
             <!-- Frage 11 -->
             <div class="question" id="question11-section" style="display:none;">
-                <label for="question11">11. Wie fandest du die zeitliche Strukturierung vom Tag der Logistik?</label>
-                <p>Bitte bewerten: <strong>1 = sehr schlecht</strong>, <strong>10 = sehr gut</strong></p>
+                <label for="question11">11. Hat dir der Tag der Logistik in deiner beruflichen Orientierung weiter geholfen?</label>
+                <p>Bitte bewerten: <strong>1 = gar nicht geholfen</strong>, <strong>10 = sehr weiter geholfen</strong></p>
                 <input type="range" id="question11" name="question11" min="1" max="10" step="1" oninput="updateRangeValue('question11', this.value)">
                 <div class="range-labels">
                     <span>1</span>
@@ -191,12 +179,11 @@
                 </div>
                 <p>Aktueller Wert: <span id="question11-value">5</span></p>
             </div>
-
             <!-- Frage 12 -->
             <div class="question" id="question12-section" style="display:none;">
-                <label for="question12">12. Wie fandest du die räumliche Aufteilung der Unternehmen beim Tag der Logistik?</label>
-                <p>Bitte bewerten: <strong>1 = sehr schlecht und ich hab mich nicht zurechtgefunden</strong>, <strong>10 = sehr gut und übersichtlich</strong></p>
-                <input type="range" id="question12" name="question9" min="1" max="10" step="1" oninput="updateRangeValue('question12', this.value)">
+                <label for="question12">12. Wie fandest du die zeitliche Strukturierung vom Tag der Logistik?</label>
+                <p>Bitte bewerten: <strong>1 = sehr schlecht</strong>, <strong>10 = sehr gut</strong></p>
+                <input type="range" id="question12" name="question12" min="1" max="10" step="1" oninput="updateRangeValue('question12', this.value)">
                 <div class="range-labels">
                     <span>1</span>
                     <span>2</span>
@@ -211,14 +198,10 @@
                 </div>
                 <p>Aktueller Wert: <span id="question12-value">5</span></p>
             </div>
-
-
-            
-
             <!-- Frage 13 -->
             <div class="question" id="question13-section" style="display:none;">
-                <label for="question13">13. Wie fandest du die Vorstellung der Unternehmen am Tag der Logistik?</label>
-                <p>Bitte bewerten: <strong>1 = sehr schlecht </strong>, <strong>10 = sehr gut</strong></p>
+                <label for="question13">13. Wie fandest du die räumliche Aufteilung der Unternehmen beim Tag der Logistik?</label>
+                <p>Bitte bewerten: <strong>1 = sehr schlecht und ich hab mich nicht zurechtgefunden</strong>, <strong>10 = sehr gut und übersichtlich</strong></p>
                 <input type="range" id="question13" name="question13" min="1" max="10" step="1" oninput="updateRangeValue('question13', this.value)">
                 <div class="range-labels">
                     <span>1</span>
@@ -234,35 +217,52 @@
                 </div>
                 <p>Aktueller Wert: <span id="question13-value">5</span></p>
             </div>
-
-            
             <!-- Frage 14 -->
             <div class="question" id="question14-section" style="display:none;">
-                <label for="question14">14. Filerfrage ?</label>
-                <select id="question14" name="question14">
-                    <option value="ja">Ja</option>
-                    <option value="nein">Nein</option>
-                </select>
+                <label for="question14">14. Wie fandest du die Vorstellung der Unternehmen am Tag der Logistik?</label>
+                <p>Bitte bewerten: <strong>1 = sehr schlecht </strong>, <strong>10 = sehr gut</strong></p>
+                <input type="range" id="question14" name="question14" min="1" max="10" step="1" oninput="updateRangeValue('question14', this.value)">
+                <div class="range-labels">
+                    <span>1</span>
+                    <span>2</span>
+                    <span>3</span>
+                    <span>4</span>
+                    <span>5</span>
+                    <span>6</span>
+                    <span>7</span>
+                    <span>8</span>
+                    <span>9</span>
+                    <span>10</span>
+                </div>
+                <p>Aktueller Wert: <span id="question14-value">5</span></p>
             </div>
-
-            <!-- Frage 15 -->
-            <div class="question" id="question15-section" style="display:none;">
-                <label for="question15">15. Würdest du zukünftig erneut an einem Tag der Logistik teilnehmen?</label>
+             <!-- Frage 15 -->
+             <div class="question" id="question15-section" style="display:none;">
+                <label for="question15">15. Welchen Programmpunkt fandest du besonders interessant?</label>
                 <select id="question15" name="question15">
-                    <option value="ja">Ja</option>
-                    <option value="nein">Nein</option>
+                    <option value="Gewinnspiel">Gewinnspiel</option>
+                    <option value="Vorträge der Unternehmen">Vorträge der Unternehmen</option>
+                    <option value="Kontaktbörse">Kontaktbörse </option>
+                    <option value="Berufsberatung">Berufsberatung</option>
                 </select>
             </div>
-
             <!-- Frage 16 -->
             <div class="question" id="question16-section" style="display:none;">
-                <label for="question16">16. Verbesserungsvorschläge:</label>
-                <textarea id="question16" name="question16"></textarea>
+                <label for="question16">16. Würdest du zukünftig erneut an einem Tag der Logistik teilnehmen?</label>
+                <select id="question16" name="question15">
+                    <option value="ja">Ja</option>
+                    <option value="nein">Nein</option>
+                </select>
             </div>
-            <!-- Frage 17: Welchen Betrieb hast du besucht? -->
-<div class="question" id="question17-section" style="display:none;">
-    <label for="question15">17. Welchen Betrieb hast du besucht?</label>
-    <p>Wähle einen oder mehrere Betriebe aus:</p>
+            <!-- Frage 17 -->
+            <div class="question" id="question17-section" style="display:none;">
+                <label for="question17">17. Verbesserungsvorschläge:</label>
+                <textarea id="question17" name="question17"></textarea>
+            </div>
+            <!-- Frage 18: Welchen Vortrag hast du besucht? -->
+<div class="question" id="question18-section" style="display:none;">
+    <label for="question18">18. Welchen Vortrag hast du besucht?</label>
+    <p>Wähle einen oder mehrere aus:</p>
     <div>
         <input type="checkbox" id="betrieb1" name="betrieb" value="Dachser" onchange="handleBetriebSelection()">
         <label for="betrieb1">Dachser</label>
@@ -294,8 +294,8 @@
     </div>      
     <button type="button" onclick="nextQuestion()">Weiter</button>
 </div>
-            <!-- Frage 18: Abschlussfrage mit Absenden-Button -->
-<div class="question" id="question18-section" style="display:none;">
+            <!-- Frage 19: Abschlussfrage mit Absenden-Button -->
+<div class="question" id="question19-section" style="display:none;">
     <h3>Vielen Dank für deine Teilnahme!</h3>
     <p>Du kannst jetzt die Umfrage absenden.</p>
     <button type="submit" id="submit-btn">Absenden</button>

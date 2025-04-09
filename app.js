@@ -1,5 +1,5 @@
 let currentQuestion = 1; // Start mit der ersten Frage
-const totalQuestions = 18; // Gesamtanzahl der regulären Fragen
+const totalQuestions = 19; // Gesamtanzahl der regulären Fragen
 
 // Funktion zur Überprüfung des Zugangscodes
 function checkAccessCode() {
@@ -25,10 +25,10 @@ function showQuestion(questionNumber) {
         }
     }
 
-    // Dynamisches Fenster nur bei Frage 17 anzeigen
+    // Dynamisches Fenster nur bei Frage 18 anzeigen
     const dynamicSection = document.getElementById("dynamic-question-section");
-    if (questionNumber === 17) {
-        const checkboxes = document.querySelectorAll('#question17-section input[type="checkbox"]');
+    if (questionNumber === 18) {
+        const checkboxes = document.querySelectorAll('#question18-section input[type="checkbox"]');
         let isChecked = Array.from(checkboxes).some(checkbox => checkbox.checked);
         dynamicSection.style.display = isChecked ? "block" : "none";
     } else {
