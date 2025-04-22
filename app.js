@@ -6,7 +6,7 @@ function checkAccessCode() {
     const enteredCode = document.getElementById("access-code").value;
     const errorMessage = document.getElementById("error-message");
 
-    if (enteredCode === "1004") {
+    if (enteredCode === "1902") {
         document.getElementById("code-section").style.display = "none";
         document.getElementById("survey-section").style.display = "block";
         showQuestion(currentQuestion);
